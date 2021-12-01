@@ -25,7 +25,7 @@ data "aws_iam_policy_document" "assume_role_policy" {
 resource "aws_iam_openid_connect_provider" "github" {
   url = "https://token.actions.githubusercontent.com"
   thumbprint_list = ["a031c46782e6e6c662c2c87c76da9aa62ccabd8e"]
-  client_id_list = ["sigstore"] # Question: GitHub ActionsのWorkflow内から叩くcurlに付与しているparamsの値と一致させる必要がある？
+  client_id_list = ["sigstore"] # MEMO: GitHub ActionsのWorkflow内から叩くcurlに付与しているparamsの値と一致させる必要がある。aws-actionsを利用する場合は sts.amazonaws.com で固定
 }
 
 resource "aws_iam_role" "main" {
